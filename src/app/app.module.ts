@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     LoginComponent,
     ContactComponent,
-    DashboardComponent
+    DashboardComponent,
+    PageNotFoundComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,

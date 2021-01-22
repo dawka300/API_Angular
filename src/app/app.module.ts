@@ -10,13 +10,15 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

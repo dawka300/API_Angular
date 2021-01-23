@@ -1,1 +1,48 @@
-<p>contact works!</p>
+<div class="container-contact100">
+  <div class="wrap-contact100">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Skontaktuj się
+				</span>
+
+      <div class="wrap-input100 validate-input">
+        <input formControlName="name" class="input100" id="name" type="text" name="name" placeholder="Imię i nazwisko">
+        <label class="label-input100" for="name">
+          <span class="lnr lnr-user"></span>
+        </label>
+      </div>
+
+      <div class="wrap-input100 validate-input">
+        <input formControlName="email" class="input100" id="email" type="text" name="email" placeholder="Email">
+        <label class="label-input100" for="email">
+          <span class="lnr lnr-envelope"></span>
+        </label>
+      </div>
+
+      <div class="wrap-input100 validate-input">
+        <textarea formControlName="message" class="input100" name="message" placeholder="Twoja wiadomość..."></textarea>
+      </div>
+      <div class="contact100-form-checkbox">
+        <input formControlName="rodo" class="input-checkbox100" id="ckb0" type="checkbox" name="rodo">
+        <label class="label-checkbox100" for="ckb0">
+          Potwierdzam zapoznanie się z klauzulą RODO
+        </label>
+      </div>
+      <div class="contact100-form-checkbox">
+        <input formControlName="copy" class="input-checkbox100" id="ckb1" type="checkbox" name="copy-mail">
+        <label class="label-checkbox100" for="ckb1">
+          Wyślij kopię wiadomości do mnie
+        </label>
+      </div>
+
+      <div class="container-contact100-form-btn">
+        <div class="wrap-contact100-form-btn">
+          <div class="contact100-form-bgbtn"></div>
+          <button class="contact100-form-btn">
+            Wyślij
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

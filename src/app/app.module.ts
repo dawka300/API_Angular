@@ -13,6 +13,8 @@ import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ApiComponent } from './api/api.component';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ApiComponent } from './api/api.component';
     AppRoutingModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

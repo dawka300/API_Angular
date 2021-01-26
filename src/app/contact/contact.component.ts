@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
     this.contactForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -21,7 +22,12 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(): void {
+   /* this.httpClient.post('http://localhost:4200/receive', {}).subscribe(
+      data => {
+        console.log(data);
+      }
+    );*/
     console.log(this.contactForm.get('name')?.value);
     console.log(this.contactForm.get('rodo')?.errors);
   }

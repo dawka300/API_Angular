@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   firebaseConfig: {
     apiKey: 'AIzaSyAb9nMPwmTrNcFuMcrzYfqV6_DvsJxMTwM',
-    authDomain: 'statistics-faf2b.firebaseapp.com',
-    projectId: 'statistics-faf2b',
-    storageBucket: 'statistics-faf2b.appspot.com',
+    authDomain: 'verdicts-faf2b.firebaseapp.com',
+    projectId: 'verdicts-faf2b',
+    storageBucket: 'verdicts-faf2b.appspot.com',
     messagingSenderId: '976900219793',
     appId: '1:976900219793:web:1bdb07170bb991578b7030'
   }

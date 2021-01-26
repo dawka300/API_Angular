@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {CourtService} from '../services/court.service';
+import {SelectInterface} from '../interfaces/select-interface';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ApiService} from '../services/api.service';
 
 @Component({
   selector: 'app-api',
@@ -7,36 +10,34 @@ import {HttpClient, HttpParams} from '@angular/common/http';
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent implements OnInit {
-  result: any;
-  constructor(private httpClient: HttpClient) { }
+  typeCourts: SelectInterface[] = [];
+  sortByType: SelectInterface[] = [];
+  sortDirection: SelectInterface[] = [];
+  form: FormGroup;
 
- /* ngOnInit(): void {
-    this.httpClient.get('https://www.saos.org.pl/api/search/judgments?pageSize=10&courtType=COMMON&sortingField=JUDGMENT_DATE&sortingDirection=DESC')
-      .subscribe(
-        data => {
-          console.log(data);
-        }
-      );
-  }*/
+  constructor(private courtService: CourtService, private formBuilder: FormBuilder, private apiService: ApiService) {
+    this.form = this.formBuilder.group({
+      words: [''],
+      signature: [''],
+      date_from: [''],
+      date_to: [''],
+      courtType: [''],
+      name_judge: [''],
+      sort_by: [''],
+      sortDirection: [''],
+    });
+  }
+
 
   ngOnInit(): void {
-    let searchParams = new HttpParams();
-    searchParams = searchParams.append('pageSize', '40');
-    searchParams = searchParams.append('pageNumber', '2');
-    searchParams = searchParams.append('courtType', 'COMMON');
-    searchParams = searchParams.append('sortingField', 'JUDGMENT_DATE');
-    searchParams = searchParams.append('sortingDirection', 'DESC');
-    this.httpClient.get('https://www.saos.org.pl/api/search/judgments',
-      {
-        // headers: {
-        //   dawid : 'bla',
-        // },
-        params: searchParams
-      }).subscribe(
-        data => {
-          console.log(data);
-        }
-      );
+    this.typeCourts = this.courtService.typeOfCourts;
+    this.sortByType = this.courtService.sortByType;
+    this.sortDirection = this.courtService.sortDirection;
+  }
+
+  onSubmit(): void {
+    const searchParams = this.apiService.searchData(this.form.value);
+    console.log(searchParams);
   }
 
 }

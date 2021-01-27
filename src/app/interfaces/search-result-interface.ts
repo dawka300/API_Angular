@@ -1,17 +1,10 @@
-import {CourtCasesInterface} from './court-cases-interface';
-import {JudgesInterface} from './judges-interface';
+import {SearchResultInterfaceItem} from './search-result-Item-interface';
 
 export interface SearchResultInterface {
-  id: number;
-  href: string;
-  courtType: string;
-  courtCases: CourtCasesInterface[];
-  judgmentType: string;
-  judgmentDate: string;
-  judges: JudgesInterface[];
-  keywords: string[];
-  textContent: string;
-
+  info: {
+    totalResults: number;
+  };
+  items: SearchResultInterfaceItem[];
+  link: object[];
+  queryTemplate: object;
 }
-
-

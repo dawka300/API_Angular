@@ -6,9 +6,9 @@ import {SelectInterface} from '../interfaces/select-interface';
 })
 export class CourtService {
   private typeCourts: SelectInterface[] = [
-    {name: 'apelacyjny', value: 'appeal'},
-    {name: 'okręgowy', value: 'regional'},
-    {name: 'rejonowy', value: 'district'}
+    {name: 'apelacyjny', value: 'APPEAL'},
+    {name: 'okręgowy', value: 'REGIONAL'},
+    {name: 'rejonowy', value: 'DISTRICT'}
   ];
 
   private sortBy: SelectInterface[] = [

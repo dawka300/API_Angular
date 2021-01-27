@@ -4,6 +4,7 @@ import {SelectInterface} from '../interfaces/select-interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ApiService} from '../services/api.service';
 
+
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
@@ -14,6 +15,8 @@ export class ApiComponent implements OnInit {
   sortByType: SelectInterface[] = [];
   sortDirection: SelectInterface[] = [];
   form: FormGroup;
+  resultSearch: any;
+  currentPage = 0;
 
   constructor(private courtService: CourtService, private formBuilder: FormBuilder, private apiService: ApiService) {
     this.form = this.formBuilder.group({
@@ -21,7 +24,7 @@ export class ApiComponent implements OnInit {
       signature: [''],
       date_from: [''],
       date_to: [''],
-      courtType: [''],
+      // courtType: [''],
       name_judge: [''],
       sort_by: [''],
       sortDirection: [''],
@@ -36,8 +39,13 @@ export class ApiComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const searchParams = this.apiService.searchData(this.form.value);
-    console.log(searchParams);
+    this.apiService.searchData(this.form.value).subscribe(
+      (data) => {
+        console.log(data);
+        this.resultSearch = data;
+      }
+    );
+
   }
 
 }

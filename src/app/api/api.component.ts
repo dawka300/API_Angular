@@ -3,6 +3,7 @@ import {CourtService} from '../services/court.service';
 import {SelectInterface} from '../interfaces/select-interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ApiService} from '../services/api.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,13 @@ export class ApiComponent implements OnInit {
   resultSearch: any;
   currentPage = 0;
 
-  constructor(private courtService: CourtService, private formBuilder: FormBuilder, private apiService: ApiService) {
+  constructor(
+    private courtService: CourtService,
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.form = this.formBuilder.group({
       words: [''],
       signature: [''],
@@ -45,7 +52,9 @@ export class ApiComponent implements OnInit {
         this.resultSearch = data;
       }
     );
-
+  }
+  showVerdict(index: number): any {
+    this.router.navigate([index], {relativeTo: this.route});
   }
 
 }

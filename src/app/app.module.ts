@@ -16,6 +16,7 @@ import { ApiComponent } from './api/api.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { ShowDataComponent } from './api/show-data/show-data.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     ContactComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    ApiComponent
+    ApiComponent,
+    ShowDataComponent
   ],
   imports: [
     BrowserModule,

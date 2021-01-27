@@ -9,7 +9,7 @@ import {SearchResultInterface} from '../interfaces/search-result-interface';
 })
 export class ApiService {
   urlSearch = 'https://www.saos.org.pl/api/search/judgments';
-  urlShow = 'https://www.saos.org.pl/api/search/judgments';
+  urlShow = 'https://www.saos.org.pl/api/judgments/';
   constructor(private httpClient: HttpClient) { }
 
 

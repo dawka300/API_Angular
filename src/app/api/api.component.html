@@ -53,6 +53,7 @@
   </div>
   <button type="submit" class="btn btn-success">Szukaj</button> |
   <button type="reset" class="btn btn-danger">Reset</button>
+<!--  <button type="button" class="btn btn-danger" (click)="showVerdict(23)">Redirect</button>-->
 </form>
   <div *ngIf="resultSearch">
     <div class="card mt-3" *ngFor="let item of resultSearch.items">
@@ -62,7 +63,7 @@
       <div class="card-body">
         <h5 class="card-title">Orzeczenie:</h5>
         <p class="card-text">Treść orzeczenia: {{item.textContent}}</p>
-        <a href="#" class="btn btn-primary" >Zobacz...</a>
+        <a style="cursor: pointer;" class="btn btn-primary" (click)="showVerdict(item.id)">Zobacz...</a>
       </div>
       <div class="card-footer text-muted">
         Z dnia: {{item.judgmentDate}}

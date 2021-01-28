@@ -20,14 +20,26 @@ export class AuthService {
         if (user) {
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(user));
-          JSON.parse(localStorage.getItem('user') as string);
         }else {
           this.userState = null;
-          localStorage.setItem('user', '');
-          JSON.parse(localStorage.getItem('user') as string);
+          // @ts-ignore
+          localStorage.setItem('user', null);
         }
      }
    );
+  }
+
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user') as string);
+    return (user !== null && user.emailVerified !== false);
+  }
+
+  signOut(): Promise<void> {
+    return this.angularFireAuth.signOut().then(
+      () => {
+        localStorage.removeItem('user');
+        this.router.navigateByUrl('login');
+      });
   }
 
   private setUserData(user: UserInterface): any {

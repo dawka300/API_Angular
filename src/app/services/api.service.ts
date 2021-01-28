@@ -13,9 +13,16 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
 
-  searchData(data: any): Observable<object> {
+  searchData(data: any): Observable<SearchResultInterface> {
     const searchData = this.addParams(data);
     return this.httpClient.get<SearchResultInterface>(this.urlSearch, {params: searchData}).pipe(
+      catchError(error => {
+        throw error;
+      })
+    );
+  }
+  getVerdict(index: number): Observable<object> {
+    return this.httpClient.get(this.urlShow + index).pipe(
       catchError(error => {
         throw error;
       })

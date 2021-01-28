@@ -53,7 +53,6 @@
   </div>
   <button type="submit" class="btn btn-success">Szukaj</button> |
   <button type="reset" class="btn btn-danger">Reset</button>
-<!--  <button type="button" class="btn btn-danger" (click)="showVerdict(23)">Redirect</button>-->
 </form>
   <div *ngIf="resultSearch">
     <div class="card mt-3" *ngFor="let item of resultSearch.items">
@@ -62,7 +61,7 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">Orzeczenie:</h5>
-        <p class="card-text">Treść orzeczenia: {{item.textContent}}</p>
+        <p class="card-text" [innerHTML]="item.textContent"></p>
         <a style="cursor: pointer;" class="btn btn-primary" (click)="showVerdict(item.id)">Zobacz...</a>
       </div>
       <div class="card-footer text-muted">
@@ -70,7 +69,7 @@
       </div>
 
     </div>
-    <nav aria-label="Page navigation example">
+    <!--<nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Poprzednia</a></li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -78,7 +77,7 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Następna</a></li>
       </ul>
-    </nav>
+    </nav>-->
   </div>
 
 

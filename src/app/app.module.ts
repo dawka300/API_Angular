@@ -17,6 +17,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ShowDataComponent } from './api/show-data/show-data.component';
+import { EmailComponent } from './email/email.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ShowDataComponent } from './api/show-data/show-data.component';
     DashboardComponent,
     PageNotFoundComponent,
     ApiComponent,
-    ShowDataComponent
+    ShowDataComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,

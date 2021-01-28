@@ -4,6 +4,7 @@ import {SelectInterface} from '../interfaces/select-interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ApiService} from '../services/api.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SearchResultInterface} from '../interfaces/search-result-interface';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ApiComponent implements OnInit {
   sortByType: SelectInterface[] = [];
   sortDirection: SelectInterface[] = [];
   form: FormGroup;
-  resultSearch: any;
+  resultSearch: SearchResultInterface | undefined;
   currentPage = 0;
 
   constructor(

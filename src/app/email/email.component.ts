@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./email.component.scss']
 })
 export class EmailComponent implements OnInit {
-
+  user: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user') as string);
   }
 
 }

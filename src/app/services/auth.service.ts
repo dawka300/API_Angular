@@ -3,6 +3,8 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {UserInterface} from '../interfaces/user-interface';
+import firebase from 'firebase';
+import auth = firebase.auth;
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class AuthService {
         }else {
           this.userState = null;
           // @ts-ignore
-          localStorage.setItem('user', null);
+          localStorage.setItem('user', '');
         }
      }
    );
@@ -53,5 +55,26 @@ export class AuthService {
     };
 
     return userReference.set(UserState, {merge: true});
+  }
+
+  FacebookAuth(): Promise<void> {
+    return this.AuthLogin(new auth.FacebookAuthProvider());
+  }
+
+  GoogleAuth(): Promise<void> {
+    return this.AuthLogin(new auth.GoogleAuthProvider());
+  }
+
+  AuthLogin(provider: any): Promise<void> {
+    return this.angularFireAuth.signInWithPopup(provider)
+      .then(result => {
+          this.ngZone.run(() => {
+            this.router.navigateByUrl('orzeczenia');
+          });
+          // @ts-ignore
+          this.setUserData(result.user);
+      }).catch(error => {
+        window.alert(error);
+      });
   }
 }

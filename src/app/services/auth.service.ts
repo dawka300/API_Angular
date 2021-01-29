@@ -47,9 +47,6 @@ export class AuthService {
   SignIn(email: string, password: string): any {
     return this.angularFireAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['orzeczenia']);
-        });
         this.setUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);

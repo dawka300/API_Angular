@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   resetPasswordForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -36,8 +37,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin(): any {
-    this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
-    // console.log(this.loginForm.value.email);
+    const login = this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
+    if (login){
+      setTimeout(() => {
+        this.router.navigate(['orzeczenia']);
+      }, 1000);
+    }
   }
 
   onSubmitSignup(): any {

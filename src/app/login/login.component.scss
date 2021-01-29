@@ -71,6 +71,14 @@
   margin: 0 auto;
 }
 
+input{
+  &.ng-touched{
+    &.ng-invalid{
+      border: #df2351 solid 2px;
+    }
+  }
+}
+
 /* Mobile */
 
 @media screen and (max-width:500px){

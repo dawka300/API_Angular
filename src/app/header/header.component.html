@@ -16,7 +16,8 @@
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/zaloguj">Zaloguj</a>
+        <a class="nav-link" routerLink="/zaloguj" *ngIf="!isLogged; else konto">Zaloguj</a>
+        <ng-template #konto><a class="nav-link" routerLink="/konto">Moje konto</a></ng-template>
       </li>
     </ul>
   </div>

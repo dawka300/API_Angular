@@ -1,13 +1,13 @@
 <div id="logreg-forms">
-  <form class="form-signin" *ngIf="display.login">
+  <form class="form-signin" *ngIf="display.login" (ngSubmit)="onSubmitLogin()" [formGroup]="loginForm">
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
     <div class="social-login">
-      <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
-      <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+      <button class="btn facebook-btn social-btn" type="button" (click)="facebookAuth()"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+      <button class="btn google-btn social-btn" type="button" (click)="googleAuth()"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
     </div>
     <p style="text-align:center"> OR  </p>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" formControlName="email">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" formControlName="password">
 
     <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
     <a (click)="displayReset()" id="forgot_pswd" style="cursor: pointer;">Forgot password?</a>
@@ -22,20 +22,20 @@
     <a (click)="displayBack()" id="cancel_reset" style="cursor: pointer;"><i class="fas fa-angle-left"></i> Back</a>
   </form>
 
-  <form action="/signup/" class="form-signup" *ngIf="display.signup">
+  <form action="/signup/" class="form-signup" (ngSubmit)="onSubmitSignup()" *ngIf="display.signup" [formGroup]="signupForm">
     <div class="social-login">
-      <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
+      <button class="btn facebook-btn social-btn" type="button" (click)="facebookAuth()"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
     </div>
     <div class="social-login">
-      <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign up with Google+</span> </button>
+      <button class="btn google-btn social-btn" type="button" (click)="googleAuth()"><span><i class="fab fa-google-plus-g"></i> Sign up with Google+</span> </button>
     </div>
 
     <p style="text-align:center">OR</p>
 
-    <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
-    <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
-    <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
-    <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
+<!--    <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">-->
+    <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="" formControlName="email">
+    <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="" formControlName="password">
+    <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="" formControlName="repeatPassword">
 
     <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
     <a (click)="displayBack()" id="cancel_signup" style="cursor: pointer;"><i class="fas fa-angle-left"></i> Back</a>

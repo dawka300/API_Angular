@@ -31,6 +31,38 @@ export class AuthService {
    );
   }
 
+  SignUp(email: string, password: string): any {
+    return this.angularFireAuth.createUserWithEmailAndPassword(email, password).then((result) => {
+      this.SendVerificationMail();
+      // @ts-ignore
+      this.SetUserData(result.user);
+    }).catch((error) => {
+      window.alert(error.message);
+    });
+  }
+
+  SignIn(email: string, password: string): any {
+    return this.angularFireAuth.signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard']);
+        });
+        // @ts-ignore
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error.message);
+      });
+  }
+
+  ForgotPassword(passwordResetEmail: string): Promise<void> {
+    return this.angularFireAuth.sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        window.alert(error);
+      });
+  }
+
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') as string);
     return (user !== null && user.emailVerified !== false);
@@ -41,6 +73,14 @@ export class AuthService {
       () => {
         localStorage.removeItem('user');
         this.router.navigateByUrl('login');
+      });
+  }
+
+  SendVerificationMail(): Promise<void> {
+    // @ts-ignore
+    return this.angularFireAuth.currentUser.then(u => u.sendEmailVerification())
+      .then(() => {
+        this.router.navigate(['email-verification']);
       });
   }
 

@@ -18,6 +18,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ShowDataComponent } from './api/show-data/show-data.component';
 import { EmailComponent } from './email/email.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EmailComponent } from './email/email.component';
     PageNotFoundComponent,
     ApiComponent,
     ShowDataComponent,
-    EmailComponent
+    EmailComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,

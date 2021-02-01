@@ -113,7 +113,6 @@ export class AuthService {
           this.ngZone.run(() => {
             this.router.navigateByUrl('orzeczenia');
           });
-          // @ts-ignore
           this.setUserData(result.user);
       }).catch(error => {
         window.alert(error);

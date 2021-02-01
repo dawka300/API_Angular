@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyAb9nMPwmTrNcFuMcrzYfqV6_DvsJxMTwM',
-    authDomain: 'verdicts-faf2b.firebaseapp.com',
-    projectId: 'verdicts-faf2b',
-    storageBucket: 'verdicts-faf2b.appspot.com',
-    messagingSenderId: '976900219793',
-    appId: '1:976900219793:web:1bdb07170bb991578b7030'
+    apiKey: 'AIzaSyCC3vve7LnYM1Q1gm5sU1TvDfx0D7NgdrA',
+    authDomain: 'verdicts-4b3ab.firebaseapp.com',
+    projectId: 'verdicts-4b3ab',
+    storageBucket: 'verdicts-4b3ab.appspot.com',
+    messagingSenderId: '969616628699',
+    appId: '1:969616628699:web:21895a8058de50dc30a5fe'
   }
 };
 
